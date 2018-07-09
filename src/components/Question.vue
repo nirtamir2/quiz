@@ -1,9 +1,8 @@
 <template>
   <div>
-    <form @submit.prevent="answerQuestion">
-    <p>{{question}}</p>
-    <button type="submit">next</button>
-    </form>
+      <p>{{question}}</p>
+      <button @click="answerQuestion">next</button>
+      <button @click="back" :disabled="backDisable">back</button>
   </div>
 </template>
 
@@ -11,11 +10,15 @@
 export default {
   name: 'Question',
   props: {
-    question: {type: Object, required: true}
+    question: {type: Object, required: true},
+    backDisable: {type: Boolean, default: false}
   },
   methods: {
     answerQuestion() {
-      this.$emit('answer', null)
+      this.$emit('answer', 1)
+    },
+    back(){
+      this.$emit('back')
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <question :question="question" @answer="saveAnswer"/>
+    <question :question="question" :backDisable="questionIndex==1"
+     @answer="saveAnswer" @back="back"/>
   </div>
 </template>
 
@@ -22,8 +23,12 @@ export default {
   },
   methods: {
     saveAnswer(answer) {
-      this.answers.push(answer)
+      this.answers[this.questionIndex] = answer
       this.questionIndex++
+      this.question = getQuestion(this.questionIndex)
+    },
+    back() {
+      this.questionIndex--
       this.question = getQuestion(this.questionIndex)
     }
   }
