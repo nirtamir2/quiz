@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <question v-if="gameOn" :question="question" :index="questionIndex"
+    <question v-if="gameOn" 
+    :question="question" :index="questionIndex" :savedAnswer="answers[questionIndex]"
      @answer="saveAnswer" @back="back"/>
      <h1 v-else>Thank you</h1>
+     <h1>{{answers}}</h1>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ export default {
   },
   methods: {
     saveAnswer(answer) {
-      this.answers[this.questionIndex] = answer
+      this.answers[this.questionIndex - 1] = answer
       this.questionIndex++
       const nextQuestion = getQuestion(this.questionIndex)
       if (nextQuestion) {

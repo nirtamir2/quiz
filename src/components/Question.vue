@@ -4,7 +4,8 @@
       <h1>{{question.question}}</h1>
       <p>{{question.body}}</p>
       <ul>
-        <li v-for="(option, index) of question.options" :key="index"
+        <li v-for="(option, optionIndex) of question.options" :key="optionIndex"
+           :class="{'red': answer === option}"
             @click="chooseAnswer(option)" >{{option}}</li>
       </ul>
       <button @click="back" v-if="index !== 1">back</button>
@@ -16,16 +17,16 @@
 export default {
   name: 'Question',
   data(){
-    return {answer: null}
+    return {answer: this.savedAnswer}
   },
   props: {
+    savedAnswer: {tupe: String, required: true},
     question: {type: Object, required: true},
     index: {type: Number, required: true},
   },
   methods: {
     answerQuestion() {
       this.$emit('answer', this.answer)
-      this.answer = null
     },
     back(){
       this.$emit('back')
@@ -38,4 +39,7 @@ export default {
 </script>
 
 <style scoped>
+.red {
+  color: red;
+}
 </style>
