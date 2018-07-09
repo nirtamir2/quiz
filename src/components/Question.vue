@@ -2,6 +2,7 @@
   <div>
       <p>Question number: {{index}}</p>
       <h1>{{question.question}}</h1>
+      <p>{{question.body}}</p>
       <ul>
         <li v-for="(option, index) of question.options" :key="index"
             @click="chooseAnswer(option)" >{{option}}</li>
