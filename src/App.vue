@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <question v-if="gameOn" 
-    :question="question" :index="questionIndex" :savedAnswer="answers[questionIndex]"
+    :question="question" :index="questionIndex" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
      @answer="saveAnswer" @back="back"/>
      <h1 v-else>Thank you</h1>
      <h1>{{answers}}</h1>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { getQuestion } from '@/services/question.js'
+import { getQuestion, getQuestionCount } from '@/services/question.js'
 import Question from './components/Question.vue'
 
 export default {
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       questionIndex: 1,
+      totalQuestions: getQuestionCount(),
       question: getQuestion(1),
       answers: [],
       gameOn: true

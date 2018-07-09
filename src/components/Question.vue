@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>Question number: {{index}}</p>
+      <p>Question number: {{index}}/{{totalQuestions}}</p>
       <h1>{{question.question}}</h1>
       <p>{{question.body}}</p>
       <ul>
@@ -23,6 +23,7 @@ export default {
     savedAnswer: {tupe: String, required: true},
     question: {type: Object, required: true},
     index: {type: Number, required: true},
+    totalQuestions: {type: Number, required: true},
   },
   methods: {
     answerQuestion() {

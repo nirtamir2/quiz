@@ -25,6 +25,10 @@ const questions = [
   }
 ]
 
+export function getQuestionCount() {
+  return questions.length
+}
+
 export function getQuestion(index) {
   return questions[index - 1]
 }
