@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <question :question="question"/>
+    <question :question="question" @answer="saveAnswer"/>
   </div>
 </template>
 
 <script>
+import { getQuestion } from '@/services/question.js'
 import Question from './components/Question.vue'
 
 export default {
@@ -14,7 +15,16 @@ export default {
   },
   data() {
     return {
-      question: {}
+      questionIndex: 1,
+      question: getQuestion(1),
+      answers: []
+    }
+  },
+  methods: {
+    saveAnswer(answer) {
+      this.answers.push(answer)
+      this.questionIndex++
+      this.question = getQuestion(this.questionIndex)
     }
   }
 }
