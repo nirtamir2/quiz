@@ -30,5 +30,5 @@ export function getQuestionCount() {
 }
 
 export function getQuestion(index) {
-  return questions[index - 1]
+  return questions[index]
 }

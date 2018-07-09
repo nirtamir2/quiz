@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <question v-if="gameOn" 
-    :question="question" :index="questionIndex" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
+    :question="question" :index="questionIndex + 1" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
      @answer="saveAnswer" @back="back"/>
      <h1 v-else>Thank you</h1>
      <h1>{{answers}}</h1>
@@ -19,16 +19,16 @@ export default {
   },
   data() {
     return {
-      questionIndex: 1,
+      questionIndex: 0,
       totalQuestions: getQuestionCount(),
-      question: getQuestion(1),
+      question: getQuestion(0),
       answers: [],
       gameOn: true
     }
   },
   methods: {
     saveAnswer(answer) {
-      this.answers[this.questionIndex - 1] = answer
+      this.answers[this.questionIndex] = answer
       this.questionIndex++
       const nextQuestion = getQuestion(this.questionIndex)
       if (nextQuestion) {
