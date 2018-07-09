@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <question :question="question" :backDisable="questionIndex==1"
+    <question :question="question" :index="questionIndex" 
      @answer="saveAnswer" @back="back"/>
   </div>
 </template>
