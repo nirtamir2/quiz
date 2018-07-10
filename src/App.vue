@@ -2,7 +2,7 @@
   <div id="app">
     <question v-if="gameOn" 
     :question="question" :index="questionIndex + 1" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
-     @answer="saveAnswer" @back="back"/>
+     @next="next" @back="back" @choose="choose"/>
      <h1 v-else>Thank you</h1>
      <h1>{{answers}}</h1>
   </div>
@@ -27,8 +27,10 @@ export default {
     }
   },
   methods: {
-    saveAnswer(answer) {
-      this.answers[this.questionIndex] = answer
+    choose(option) {
+      this.$set(this.answers, this.questionIndex, option)
+    },
+    next() {
       this.questionIndex++
       const nextQuestion = getQuestion(this.questionIndex)
       if (nextQuestion) {
