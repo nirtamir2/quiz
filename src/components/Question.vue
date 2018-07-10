@@ -2,9 +2,9 @@
   <div class="card">
     <div class="question-header">
       <h1 class="bold title">{{question.question}}</h1>
-      <span class="bold score">SCORE - {{index}}/{{totalQuestions}}</span>
+      <span class="bold score">SCORE - {{index+1}}/{{totalQuestions}}</span>
     </div>
-    <progress-bar :progress="index/totalQuestions * 100"/>
+    <progress-bar :progress="(index)/totalQuestions * 100"/>
     <div class="question-main">
       <p class="bold">{{question.body}}</p>
       <ul class="options">
@@ -14,7 +14,7 @@
       </ul>
     </div>
     <div class="question-buttons">
-      <button @click="back" v-if="index !== 1">back</button>
+      <button @click="back" v-if="index !== 0">back</button>
       <button @click="next" :disabled="!savedAnswer">next</button>
     </div>
   </div>

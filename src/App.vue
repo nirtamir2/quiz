@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <question v-if="gameOn" 
-    :question="question" :index="questionIndex + 1" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
+    :question="question" :index="questionIndex" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
      @next="next" @back="back" @choose="choose"/>
      <h1 v-else>Thank you</h1>
   </div>
