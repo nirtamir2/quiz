@@ -5,11 +5,11 @@
       <span class="bold score">SCORE - {{index}}/{{totalQuestions}}</span>
     </div>
     <progress-bar :progress="index/totalQuestions * 100"/>
-    <div class="question-body">
-      <p>{{question.body}}</p>
-      <ul>
+    <div class="question-main">
+      <p class="bold">{{question.body}}</p>
+      <ul class="options">
         <li v-for="(option, optionIndex) of question.options" :key="optionIndex"
-           :class="{'red': savedAnswer === option}"
+           :class="{'option-selected': savedAnswer === option, option: true}"
             @click="choose(option)" >{{option}}</li>
       </ul>
     </div>
@@ -24,21 +24,21 @@
 import ProgressBar from './ProgressBar'
 export default {
   name: 'Question',
-  components: {ProgressBar},
+  components: { ProgressBar },
   props: {
-    savedAnswer: {type: String, required: true},
-    question: {type: Object, required: true},
-    index: {type: Number, required: true},
-    totalQuestions: {type: Number, required: true},
+    savedAnswer: { type: String, required: true },
+    question: { type: Object, required: true },
+    index: { type: Number, required: true },
+    totalQuestions: { type: Number, required: true }
   },
   methods: {
     choose(option) {
       this.$emit('choose', option)
     },
-    back(){
+    back() {
       this.$emit('back')
     },
-    next(){
+    next() {
       this.$emit('next')
     }
   }
@@ -57,7 +57,6 @@ export default {
 .bold {
   font-size: 0.8em;
   font-weight: bolder;
-  margin: 0;
 }
 
 .question-header {
@@ -65,15 +64,36 @@ export default {
   display: flex;
 }
 
+.question-main {
+  margin: 1em 0;
+}
+
+.options {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option {
+  margin: 1em;
+  font-size: 0.9em;
+  list-style: none;
+  padding: 1em;
+  border: 2px solid var(--option-border);
+  transition: border-color 0.2s linear;
+  text-align: center;
+}
+
+.option-selected {
+  border-color: var(--option-selected);
+}
 .title {
   flex: 1;
+  margin: 0;
 }
 
 .score {
   justify-self: flex-end;
-}
-
-.red {
-  color: red;
 }
 </style>
