@@ -14,8 +14,8 @@
       </ul>
     </div>
     <div class="question-buttons">
-      <button @click="back" v-if="index !== 0">back</button>
-      <button @click="next" :disabled="!savedAnswer">next</button>
+      <button class="button" @click="back" v-if="index !== 0">back</button>
+      <button class="button" @click="next" :disabled="!savedAnswer">next</button>
     </div>
   </div>
 </template>
@@ -68,6 +68,11 @@ export default {
   margin: 1em 0;
 }
 
+.question-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .options {
   padding: 0;
   display: flex;
@@ -76,6 +81,7 @@ export default {
 }
 
 .option {
+  cursor: pointer;
   margin: 1em;
   font-size: 0.9em;
   list-style: none;
@@ -95,5 +101,22 @@ export default {
 
 .score {
   justify-self: flex-end;
+}
+
+.button {
+  background-color: var(--button-primary);
+  color: var(--text);
+  padding: 0.3em 2em;
+  font-size: 0.9rem;
+  outline: none;
+  margin-left: 0.5em;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.1em;
+}
+
+.button:disabled {
+  color: var(--text-disable);
+  cursor: not-allowed;
 }
 </style>
