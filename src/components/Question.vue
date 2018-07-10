@@ -16,9 +16,6 @@
 <script>
 export default {
   name: 'Question',
-  data(){
-    return {answer: this.savedAnswer}
-  },
   props: {
     savedAnswer: {tupe: String, required: true},
     question: {type: Object, required: true},
@@ -33,7 +30,7 @@ export default {
       this.$emit('back')
     },
     chooseAnswer(option){
-      this.answer = option
+      this.$emit('choose', option)
     }
   }
 }

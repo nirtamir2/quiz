@@ -2,7 +2,7 @@
   <div id="app">
     <question v-if="gameOn" 
     :question="question" :index="questionIndex + 1" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
-     @answer="saveAnswer" @back="back"/>
+     @answer="saveAnswer" @back="back" @choose="choose"/>
      <h1 v-else>Thank you</h1>
      <h1>{{answers}}</h1>
   </div>
@@ -27,6 +27,9 @@ export default {
     }
   },
   methods: {
+    choose(option) {
+      this.answers[this.questionIndex] = option
+    },
     saveAnswer(answer) {
       this.answers[this.questionIndex] = answer
       this.questionIndex++
