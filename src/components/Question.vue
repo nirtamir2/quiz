@@ -4,6 +4,7 @@
       <h1 class="bold title">{{question.question}}</h1>
       <span class="bold score">SCORE - {{index}}/{{totalQuestions}}</span>
     </div>
+    <progress-bar :progress="index/totalQuestions * 100"/>
     <div class="question-body">
       <p>{{question.body}}</p>
       <ul>
@@ -20,8 +21,10 @@
 </template>
 
 <script>
+import ProgressBar from './ProgressBar'
 export default {
   name: 'Question',
+  components: {ProgressBar},
   props: {
     savedAnswer: {type: String, required: true},
     question: {type: Object, required: true},
@@ -58,6 +61,7 @@ export default {
 }
 
 .question-header {
+  padding: 1em 0;
   display: flex;
 }
 
