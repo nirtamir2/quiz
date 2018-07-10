@@ -4,7 +4,6 @@
     :question="question" :index="questionIndex + 1" :savedAnswer="answers[questionIndex]" :totalQuestions="totalQuestions"
      @next="next" @back="back" @choose="choose"/>
      <h1 v-else>Thank you</h1>
-     <h1>{{answers}}</h1>
   </div>
 </template>
 
@@ -46,3 +45,12 @@ export default {
   }
 }
 </script>
+<style>
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5em;
+}
+</style>
+

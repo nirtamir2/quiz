@@ -1,0 +1,17 @@
+:root {
+  --background: #ececec;
+  --card-background: #ffffff;
+  --button-primary: #cccccc;
+  --text: #4e4e4e;
+  --text--light: #767676;
+  --progress: #3734f8;
+  --option-border-selected: #b4b4b4;
+  --option-border: #e5e5e5;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+}
